@@ -6,4 +6,19 @@
 	<select id="selectUserList" resultType="UserVO"> 
 		SELECT * FROM USER_INFO
 	</select>
+	
+	<select id="checkUserNo" parameterType="UserVO" resultType="int">
+		SELECT USER_NO
+		FROM USER_INFO
+		WHERE USER_ID = #{userId}
+	</select>
+	
+	<insert id="insertUser" parameterType="UserVO">
+		INSERT INTO USER_INFO(USER_NO, USER_ID, USER_PW)
+		VALUES (
+			USER_NO.NEXTVAL
+			, #{userId}
+			, #{userPw}
+		)
+	</insert>
 </mapper>

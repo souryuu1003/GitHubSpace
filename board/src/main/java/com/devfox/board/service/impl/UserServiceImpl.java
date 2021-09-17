@@ -19,4 +19,14 @@ public class UserServiceImpl implements UserService{
 	public List<UserVO> selectUserList() throws Exception {
 		return userMapper.selectUserList();
 	}
+	
+	@Override
+	public int selectUserNo(UserVO userVO) throws Exception{
+		return userMapper.selectUserNo(userVO);
+	}
+	
+	@Override
+	public void insertUser(UserVO userVO){
+		userMapper.insertUser(userVO);
+	}
 }

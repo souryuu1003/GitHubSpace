@@ -18,5 +18,18 @@ public class UserDAOImpl implements UserDAO {
 	public List<UserVO> selectUserList() throws Exception {
 		return sqlSession.selectList("selectUserList");
 	}
+	
+	@Override
+	public int selectUserNo(UserVO userVO) {
+		int userNo = -1;
+		if(sqlSession.selectOne("checkUserNo", userVO) != null) {
+			userNo = sqlSession.selectOne("checkUserNo", userVO);
+		}
+		return userNo;
+	}
+	
+	@Override
+	public void insertUser(UserVO userVO) {
+		sqlSession.insert("insertUser", userVO);
+	}
 }
-

@@ -54,7 +54,14 @@ public class MainController {
 	    return "join";
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinForm(Model model) throws Exception {
+	public String joinForm(Model model, UserVO userVO) throws Exception {
+		int userNo = userService.selectUserNo(userVO);
+		if(userNo == -1 && "" != userVO.getUserId() && "" != userVO.getUserPw()) {
+			userService.insertUser(userVO);
+		}
+		if(userNo != -1) {
+			model.addAttribute("errorMessage", "既に登録されているメールアドレスです。");
+		}
 	    return this.index(model);
 	}
 	

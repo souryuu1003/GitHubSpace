@@ -7,7 +7,7 @@
 <body>
 <div id="Frame_Set">
 	index
-
+<input id="Error_Message" value="${errorMessage}" hidden="hidden">
 	<table border="1">
 	<thead>
 	<tr>
@@ -32,4 +32,10 @@
 	</table>
 </div>
 </body>
+<script type="text/javascript">
+	let errorMessage = document.getElementById('Error_Message');
+	if(errorMessage.value != ''){
+		alert(errorMessage.value);
+	}
+</script>
 <jsp:include page="/WEB-INF/views/standard/footer.jsp"/>
