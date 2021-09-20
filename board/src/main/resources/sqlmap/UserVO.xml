@@ -21,4 +21,11 @@
 			, #{userPw}
 		)
 	</insert>
+	
+	<select id="loginUser" parameterType="UserVO" resultType="UserVO">
+		SELECT USER_NO, USER_ID, USER_RL, USER_MC
+		FROM USER_INFO
+		WHERE USER_ID = #{userId}
+		AND USER_PW = #{userPw}
+	</select>
 </mapper>

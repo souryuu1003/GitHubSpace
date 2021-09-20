@@ -21,15 +21,20 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Override
 	public int selectUserNo(UserVO userVO) {
-		int userNo = -1;
+		int selectUserNo = -1;
 		if(sqlSession.selectOne("checkUserNo", userVO) != null) {
-			userNo = sqlSession.selectOne("checkUserNo", userVO);
+			selectUserNo = sqlSession.selectOne("checkUserNo", userVO);
 		}
-		return userNo;
+		return selectUserNo;
 	}
 	
 	@Override
 	public void insertUser(UserVO userVO) {
 		sqlSession.insert("insertUser", userVO);
+	}
+
+	@Override
+	public UserVO loginUser(UserVO userVO) {
+		return sqlSession.selectOne("loginUser", userVO);
 	}
 }

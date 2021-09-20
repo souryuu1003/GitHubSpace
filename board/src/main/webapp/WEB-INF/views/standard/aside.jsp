@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <aside style="display: none;">
+<input id="Login_User" value="${loginUser}" hidden="hidden">
 <ul>
 	<li>
-		<a id="Login_User_Button" href="/board/login">Login</a>
+		<a id="Login_Button" href="/board/login">Login</a>
+		<a id="Logout_Button" href="/board/logout">Logout</a>
 		<a id="Join_User_Button" href="/board/join">Join</a>
 		<a id="Close_Aside_Button" onclick="closeAside()">X</a>
 	</li>

@@ -8,5 +8,6 @@ public interface UserService {
 	List<UserVO> selectUserList() throws Exception;
 	int selectUserNo(UserVO userVO) throws Exception;
 	void insertUser(UserVO userVO);
+	UserVO loginUser(UserVO userVO) throws Exception;
 }
 

@@ -34,7 +34,7 @@
 </body>
 <script type="text/javascript">
 	let errorMessage = document.getElementById('Error_Message');
-	if(errorMessage.value != ''){
+	if(errorMessage.value != '' && errorMessage.value != null){
 		alert(errorMessage.value);
 	}
 </script>

@@ -3,6 +3,7 @@ package com.devfox.board;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,35 +35,50 @@ public class MainController {
 	    return "forward:index";
 	}
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String index(Model model) throws Exception {
+	public String index(Model model, HttpSession session) throws Exception {
 	    List<UserVO> userList = userService.selectUserList();
 	    model.addAttribute("userList", userList);
 	    return "index";
 	}
 	
-	/* login & join */
+	/* login */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) throws Exception {
 	    return "login";
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginForm(Model model) throws Exception {
-		return this.index(model);
+	public String loginForm(Model model, HttpSession session, UserVO userVO) throws Exception {
+		UserVO loginUser = userService.loginUser(userVO);
+		if(null != loginUser) {
+			session.setAttribute("loginUser", loginUser);
+			model.addAttribute("errorMessage", "Spring 掲示板へようこそ。");
+		}
+		else {
+			model.addAttribute("errorMessage", "メールアドレスまたはパスワードに間違いがあります。");
+			return "login";
+		}
+		return this.index(model, session);
 	}
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Model model, HttpSession session) throws Exception {
+		session.removeAttribute("loginUser");
+		model.addAttribute("errorMessage", "ログアウトしました。");
+	    return this.index(model, null);
+	}
+	
+	/* join */
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join(Model model) throws Exception {
 	    return "join";
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String joinForm(Model model, UserVO userVO) throws Exception {
-		int userNo = userService.selectUserNo(userVO);
-		if(userNo == -1 && "" != userVO.getUserId() && "" != userVO.getUserPw()) {
+		int selectUserNo = userService.selectUserNo(userVO);
+		if(selectUserNo == -1 && "" != userVO.getUserId() && "" != userVO.getUserPw())
 			userService.insertUser(userVO);
-		}
-		if(userNo != -1) {
+		else
 			model.addAttribute("errorMessage", "既に登録されているメールアドレスです。");
-		}
-	    return this.index(model);
+	    return this.index(model, null);
 	}
 	
 	/* board */
@@ -100,7 +116,6 @@ public class MainController {
 	}
 	
 	/* comment */
-	
 	@RequestMapping(value = "/deleteComment", method = RequestMethod.POST)
 	public String deleteComment(Model model) throws Exception {
 	    return "/board/readBoard";

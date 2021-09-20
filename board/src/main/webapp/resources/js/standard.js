@@ -4,7 +4,13 @@ const header = document.getElementsByTagName('header');
 const aside = document.getElementsByTagName('aside');
 const body = document.getElementsByTagName('body');
 let frameSet;
-let opentAsideButton;
+
+/* aside */
+let openAsideButton;
+let loginUser;
+let loginButton;
+let logoutButton;
+let joinUserButton;
 
 /* login & join */
 const idCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -19,12 +25,32 @@ function moveMain(){
 
 /* aside */
 function openAside(){
-	opentAsideButton = document.getElementById('Open_Aside_Button');
+	openAsideButton = document.getElementById('Open_Aside_Button');
+	loginUser = document.getElementById('Login_User');
+	loginButton = document.getElementById('Login_Button');
+	logoutButton = document.getElementById('Logout_Button');
+	joinUserButton = document.getElementById('Join_User_Button');
 	frameSet = document.getElementById('Frame_Set');
 	
 	aside[0].style.display = 'block';
-	opentAsideButton.style.display = 'none';
+	logoutButton.style.display = 'none';
+	openAsideButton.style.display = 'none';
 	
+	// login & logout button
+	if(loginUser.value != ""){
+		loginButton.style.display = 'none';
+		joinUserButton.style.display = 'none';
+		logoutButton.style.display = 'block';
+		logoutButton.style.width = 'fit-content';
+	}
+	else{
+		logoutButton.style.display = 'none';
+		loginButton.style.display = 'block';
+		loginButton.style.float = 'left';
+		loginButton.style.width = 'fit-content';
+	}
+	
+	// aside frame size
 	if(screen.width >= 992){
 		frameSet.style.width = '76%';
 		aside[0].style.borderLeft = '1px solid';
@@ -37,10 +63,10 @@ function openAside(){
 	}
 }
 function closeAside(){
-	opentAsideButton = document.getElementById('Open_Aside_Button');
+	openAsideButton = document.getElementById('Open_Aside_Button');
 	
 	header[0].style.borderBottom = '1px solid';
-	opentAsideButton.style.display = 'block';
+	openAsideButton.style.display = 'block';
 	aside[0].style.display = 'none';
 }
 
@@ -62,7 +88,6 @@ function loginCheck(){
 	userPw = document.getElementsByName('userPw')[0];
 	
 	if(idCheck.test(userId.value) && pwCheck.test(userPw.value)){
-		alert('');
 		joinForm.action = '/board/login';
 		joinForm.method = 'post';
 	}
@@ -70,14 +95,6 @@ function loginCheck(){
 		alert('メールアドレスまたはパスワードに間違いがあります。\nもう一度やり直してください。');
 		joinForm.action = 'redirect:/board/login';
 		joinForm.method = 'get';
-		if(userId.value == '')
-			userId.style.border = '1px solid red';
-		if(userId.value != '')
-			userId.style.border = '1px solid';
-		if(userPw.value == '')
-			userPw.style.border = '1px solid red';
-		if(userPw.value != '')
-			userPw.style.border = '1px solid';
 	}
 }
 

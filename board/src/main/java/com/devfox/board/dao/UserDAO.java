@@ -8,5 +8,6 @@ public interface UserDAO {
 	List<UserVO> selectUserList() throws Exception;
 	int selectUserNo(UserVO userVO);
 	void insertUser(UserVO userVO);
+	UserVO loginUser(UserVO userVO);
 }
 
