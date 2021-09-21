@@ -29,8 +29,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public void insertUser(UserVO userVO) {
-		sqlSession.insert("insertUser", userVO);
+	public void joinUser(UserVO userVO) {
+		sqlSession.insert("joinUser", userVO);
 	}
 
 	@Override

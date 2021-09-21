@@ -7,7 +7,7 @@
 <body>
 <div id="Frame_Set">
 login
-<form id="Login_Join_Form" action="#" method="post">
+<form id="Login_Join_Form" action="/board/login" method="post">
 	<table>
 		<tr>
 			<td colspan="4">ログイン</td>

@@ -6,23 +6,23 @@
 <body>
 <div id="Frame_Set">
 createForm
-<form id="Create_Read_Update_Form" action="createBoard" method="post">
+<form id="Create_Read_Update_Form" action="/board/createBoard" method="post">
 	<table>
 		<tr>
 			<td colspan="1">Title</td>
-			<td colspan="4"><input onkeyup="limiteBoardTitle(this)"></td>
+			<td colspan="4"><input name="boardTitle" onkeyup="limiteBoardTitle(this)"></td>
 		</tr>
 		<tr>
 			<td colspan="3"></td>
 			<td colspan="1">Writer</td>
-			<td colspan="1"><input readonly="readonly"></td>
+			<td colspan="1"><input name="boardWriter" readonly="readonly" value="${loginUser.userId}"></td>
 		</tr>
 		<tr>
 			<td colspan="1">Content</td>
-			<td colspan="4"><textarea cols="30" rows="20" onkeyup="limiteBoardContent(this)"></textarea></td>
+			<td colspan="4"><textarea name="boardContent" cols="30" rows="60" onkeyup="limiteBoardContent(this)"></textarea></td>
 		</tr>
 		<tr>
-			<td colspan="5"><button type="submit">登録</button></td>
+			<td colspan="5"><button type="submit" onclick="createCheck()">登録</button></td>
 		</tr>
 	</table>
 </form>

@@ -13,7 +13,6 @@
 	<tr>
 		<th>NO</th>
 		<th>TITLE</th>
-		<th>CONTENT</th>
 		<th>WRITER</th>
 	</tr>
 	</thead>
@@ -21,13 +20,23 @@
 		<c:forEach var="list" items="${boardList}">
 		<tr>
 			<td>${list.boardNo}</td>
-			<td>${list.boardTitle}</td>
-			<td>${list.boardContent}</td>
+			<td>
+				<form action="/board/readBoard" method="get">
+					<input name="boardNo" hidden="hidden" value="${list.boardNo}">
+					<button id="Read_Button" type="submit" onclick="rollCheck('${loginUser.userId})'">${list.boardTitle}</button>
+				</form>
+			</td>
 			<td>${list.boardWriter}</td>
 		</tr>
 		</c:forEach>
 	</tbody>
 	</table>
+	<button id="Create_Board_Button" onclick="location.href='/board/createBoard'">登録</button>
 </div>
 </body>
+<script type="text/javascript">
+if(document.getElementById('Login_User').value == ''){
+	document.getElementById('Create_Board_Button').style.display = 'none';
+}
+</script>
 <jsp:include page="/WEB-INF/views/standard/footer.jsp"/>

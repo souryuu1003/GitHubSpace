@@ -18,5 +18,26 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardVO> selectBoardList() throws Exception {
 		return sqlSession.selectList("selectBoardList");
 	}
+
+	@Override
+	public void createBoard(BoardVO boardVO) {
+		sqlSession.insert("createBoard", boardVO);
+	}
+
+	@Override
+	public BoardVO readBoard(BoardVO boardVO) {
+		return sqlSession.selectOne("readBoard", boardVO);
+	}
+
+	@Override
+	public void updateBoard(BoardVO boardVO) {
+		sqlSession.update("updateBoard", boardVO);
+	}
+
+	@Override
+	public void deleteBoard(int boardNo) throws Exception {
+		sqlSession.delete("deleteBoard", boardNo);
+		
+	}
 }
 

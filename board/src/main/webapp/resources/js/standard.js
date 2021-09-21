@@ -19,6 +19,11 @@ let joinForm;
 let userId;
 let userPw;
 
+/* board */
+let boardTitle;
+let boardContent;
+let deleteBoardForm;
+
 function moveMain(){
 	location.href = '/board';
 }
@@ -88,13 +93,21 @@ function loginCheck(){
 	userPw = document.getElementsByName('userPw')[0];
 	
 	if(idCheck.test(userId.value) && pwCheck.test(userPw.value)){
-		joinForm.action = '/board/login';
-		joinForm.method = 'post';
+		loginForm.action = '/board/login';
+		loginForm.method = 'post';
 	}
 	else{
 		alert('メールアドレスまたはパスワードに間違いがあります。\nもう一度やり直してください。');
-		joinForm.action = 'redirect:/board/login';
-		joinForm.method = 'get';
+		loginForm.action = 'redirect:/board/login';
+		loginForm.method = 'get';
+		if(userId.value == '')
+			userId.style.border = '1px solid red';
+		if(userId.value != '')
+			userId.style.border = '1px solid';
+		if(userPw.value == '')
+			userPw.style.border = '1px solid red';
+		if(userPw.value != '')
+			userPw.style.border = '1px solid';
 	}
 }
 
@@ -125,6 +138,22 @@ function joinCheck(){
 }
 
 /* board */
+function createCheck(){
+	boardTitle = document.getElementsByName('boardTitle')[0];
+	boardContent = document.getElementsByName('boardContent')[0];
+	
+	if(boardTitle.value == '' && boardContent.value == ''){
+		alert('タイトルまたは内容に空欄があります。\nもう一度やり直してください。');
+	}
+}
+function deleteCheck(){
+	deleteBoardForm = document.getElementById('Delete_Board_Form');
+    if (confirm("本当に削除しますか？")) {
+    	return true;
+    }else{
+    	return false;
+    }
+}
 function limiteBoardTitle(inputTag){
 	var boardTitle = inputTag.value;       
 	if(boardTitle.length > 20) {

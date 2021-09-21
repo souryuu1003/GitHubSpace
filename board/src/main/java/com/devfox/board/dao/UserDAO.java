@@ -7,7 +7,7 @@ import com.devfox.board.vo.UserVO;
 public interface UserDAO {
 	List<UserVO> selectUserList() throws Exception;
 	int selectUserNo(UserVO userVO);
-	void insertUser(UserVO userVO);
+	void joinUser(UserVO userVO);
 	UserVO loginUser(UserVO userVO);
 }
 

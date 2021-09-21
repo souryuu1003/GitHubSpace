@@ -3,6 +3,7 @@ package com.devfox.board;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -51,7 +52,7 @@ public class MainController {
 		UserVO loginUser = userService.loginUser(userVO);
 		if(null != loginUser) {
 			session.setAttribute("loginUser", loginUser);
-			model.addAttribute("errorMessage", "Spring 掲示板へようこそ。");
+			model.addAttribute("errorMessage", "Spring Boardへようこそ。");
 		}
 		else {
 			model.addAttribute("errorMessage", "メールアドレスまたはパスワードに間違いがあります。");
@@ -75,7 +76,7 @@ public class MainController {
 	public String joinForm(Model model, UserVO userVO) throws Exception {
 		int selectUserNo = userService.selectUserNo(userVO);
 		if(selectUserNo == -1 && "" != userVO.getUserId() && "" != userVO.getUserPw())
-			userService.insertUser(userVO);
+			userService.joinUser(userVO);
 		else
 			model.addAttribute("errorMessage", "既に登録されているメールアドレスです。");
 	    return this.index(model, null);
@@ -93,26 +94,49 @@ public class MainController {
 	    return "/board/createBoard";
 	}
 	@RequestMapping(value = "/createBoard", method = RequestMethod.POST)
-	public String createBoardForm(Model model) throws Exception {
+	public String createBoardForm(Model model, HttpServletRequest request, BoardVO boardVO) throws Exception {
+		if(!request.getParameter("boardTitle").equals("") 
+		&& !request.getParameter("boardWriter").equals("") 
+		&& !request.getParameter("boardContent").equals("")) {
+			boardVO.setBoardTitle(request.getParameter("boardTitle"));
+			boardVO.setBoardWriter(request.getParameter("boardWriter"));
+			boardVO.setBoardContent(request.getParameter("boardContent"));
+			boardService.createBoard(boardVO);
+		}else{
+			return this.createBoard(model);
+		};
 		return this.listBoard(model);
 	}
 	@RequestMapping(value = "/readBoard", method = RequestMethod.GET)
-	public String readBoard(Model model) throws Exception {
+	public String readBoard(Model model, HttpServletRequest request, BoardVO boardVO) throws Exception {
+		boardVO.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
+		BoardVO readBoard = boardService.readBoard(boardVO);
+		model.addAttribute("readBoard", readBoard);
 		List<CommentVO> commentList = commentService.selectCommentList();
 		model.addAttribute("commentList", commentList);
 	    return "/board/readBoard";
 	}
 	@RequestMapping(value = "/updateBoard", method = RequestMethod.GET)
-	public String updateBoard(Model model) throws Exception {
-		return "/board/readBoard";
+	public String updateBoard(Model model, HttpServletRequest request, BoardVO boardVO) throws Exception {
+		boardVO.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
+		BoardVO updateBoard = boardService.readBoard(boardVO);
+		model.addAttribute("updateBoard", updateBoard);
+		return "/board/updateBoard";
 	}
 	@RequestMapping(value = "/updateBoard", method = RequestMethod.POST)
-	public String updateBoardForm(Model model) throws Exception {
-		return "/board/listBoard";
+	public String updateBoardForm(Model model, HttpServletRequest request, BoardVO boardVO) throws Exception {
+		boardVO.setBoardNo(Integer.parseInt(request.getParameter("boardNo")));
+		boardVO.setBoardTitle(request.getParameter("boardTitle"));
+		boardVO.setBoardContent(request.getParameter("boardContent"));
+		boardService.updateBoard(boardVO);
+		model.addAttribute("errorMessage", "修正されました。");
+		return this.listBoard(model);
 	}
 	@RequestMapping(value = "/deleteBoard", method = RequestMethod.POST)
-	public String deleteBoardForm(Model model) throws Exception {
-		return "/board/listBoard";
+	public String deleteBoardForm(Model model, HttpServletRequest request) throws Exception {
+		boardService.deleteBoard(Integer.parseInt(request.getParameter("boardNo")));
+		model.addAttribute("errorMessage", "削除されました。");
+		return this.listBoard(model);
 	}
 	
 	/* comment */

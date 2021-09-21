@@ -10,13 +10,13 @@
 <input id="Error_Message" value="${errorMessage}" hidden="hidden">
 	<table border="1">
 	<thead>
-	<tr>
-		<th>NO</th>
-		<th>ID</th>
-		<th>PW</th>
-		<th>ROLL</th>
-		<th>MCOUNT</th>
-	</tr>
+		<tr>
+			<th>NO</th>
+			<th>ID</th>
+			<th>PW</th>
+			<th>ROLL</th>
+			<th>MCOUNT</th>
+		</tr>
 	</thead>
 	<tbody>
 		<c:forEach var="list" items="${userList}">

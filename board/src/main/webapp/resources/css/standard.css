@@ -47,6 +47,7 @@ ul li{
 }
 
 a {
+	cursor: pointer;
 	text-decoration: none;
 	color: black;
 }
@@ -126,6 +127,9 @@ body div {
 }
 
 /* board */
+#Create_Read_Update_Form {
+	text-align: center;
+}
 #Create_Read_Update_Form table{
 	margin: auto;
 	width: 80%;
@@ -145,21 +149,55 @@ body div {
 	font-size: 1.8em;
 }
 #Create_Read_Update_Form table tr td textarea {
-	height: 120px;
+	height: 360px;
 	width: 100%;
 	resize: none;
 	font-size: 1.8em;
 }
-#Create_Read_Update_Form table tr td button {
+#Create_Read_Update_Form button {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	padding: 6px;
 	font-size: 1.2em;
-	border: 1px solid blue;
 	background-color: white;
-	color: blue;
+	cursor: pointer;
 }
 #Create_Read_Update_Form table tr td button:hover {
+	color: aqua;
+	border: 1px solid aqua; 
+}
+#Update_Board_Button {
+	border: 1px solid green;
+	color: green;
+}
+#Update_Board_Button:hover {
+	border: 1px solid gray;
+	color: gray;
+}
+#Delete_Board_Form{
+	text-align: center;
+}
+#Delete_Board_Button {
+    margin-bottom: 30px;
+    padding: 6px;
+    font-size: 1.2em;
+    background-color: white;
+    border: 1px solid red;
+	color: red;
+    cursor: pointer;
+}
+#Delete_Board_Button:hover {
+	border: 1px solid gray; 
+	color: gray;
+}
+#Read_Button {
+	border: none;
+	font-size: 1.2em;
+	background-color: white;
+	color: black;
+	cursor: pointer;
+}
+#Read_Button:hober {
 	color: aqua;
 	border: 1px solid aqua; 
 }

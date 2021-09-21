@@ -13,7 +13,7 @@
 		WHERE USER_ID = #{userId}
 	</select>
 	
-	<insert id="insertUser" parameterType="UserVO">
+	<insert id="joinUser" parameterType="UserVO">
 		INSERT INTO USER_INFO(USER_NO, USER_ID, USER_PW)
 		VALUES (
 			USER_NO.NEXTVAL
