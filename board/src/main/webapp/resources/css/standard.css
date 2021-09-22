@@ -127,6 +127,32 @@ body div {
 }
 
 /* board */
+#Frame_Set {
+	text-align: center;
+}
+
+#Frame_Set table {
+	width: 100%;
+	text-align: left;
+}
+#Frame_Set table tr td{
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+#Board_List td:nth-child(1) {
+	width: 10%;
+	text-align: center;
+}
+#Board_List td:nth-child(2) {
+	width: 60%;
+}
+#Board_List td:nth-child(3) {
+	width: 30%;
+}
+#Read_Button{
+	width: 100%;
+	text-align: left;
+}
 #Create_Read_Update_Form {
 	text-align: center;
 }
@@ -154,15 +180,17 @@ body div {
 	resize: none;
 	font-size: 1.8em;
 }
-#Create_Read_Update_Form button {
+#Create_Board_Button, #Create_Read_Update_Form button {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	padding: 6px;
 	font-size: 1.2em;
 	background-color: white;
+	color:blue;
+	border: 1px solid blue;
 	cursor: pointer;
 }
-#Create_Read_Update_Form table tr td button:hover {
+#Create_Board_Button:hover, #Create_Read_Update_Form table tr td button:hover {
 	color: aqua;
 	border: 1px solid aqua; 
 }
@@ -244,7 +272,6 @@ footer a {
 		float: left;
 		padding-top: 9px;
 	}
-	
 	body {
 		height: 801px;
 		width: 100%;
@@ -252,6 +279,12 @@ footer a {
 		font-size: 1.0em;
 		font-weight: normal;
 	}
+
+	/* board */	
+	#Frame_Set table tr td{
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
 } 
 
 /* big screen desktop */

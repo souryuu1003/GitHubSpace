@@ -9,40 +9,21 @@
 readForm
 <form id="Create_Read_Update_Form" action="/board/updateBoard" method="get">
 	<table border="1">
-		<thead>
-			<tr>
-				<th>NO</th>
-				<th>TITLE</th>
-				<th>WRITER</th>
-				<th>CONTENT</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><input name="boardNo" hidden="hidden" value="${readBoard.boardNo}"> ${readBoard.boardNo}</td>
-				<td>${readBoard.boardTitle}</td>
-				<td><input id="BOARD_WRITER" hidden="hidden" value="${readBoard.boardWriter}"> ${readBoard.boardWriter}</td>
-				<td>${readBoard.boardContent}</td>
-			</tr>
-		</tbody>
-		<thead>
-			<tr>
-				<th>NO</th>
-				<th>CONTENT</th>
-				<th>WRITER</th>
-				<th>BNO</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="cl" items="${commentList}">
-				<tr>
-					<td>${cl.commentNo}</td>
-					<td>${cl.commentContent}</td>
-					<td>${cl.commentWriter}</td>
-					<td>${cl.fkBoardNo}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
+		<tr>
+			<td>NO</td><td><input name="boardNo" hidden="hidden" value="${readBoard.boardNo}"> ${readBoard.boardNo}</td>
+		</tr>
+		<tr>
+			<td>Title</td><td>${readBoard.boardTitle}</td>
+		</tr>
+		<tr>
+			<td>Writer</td><td><input id="Board_Writer" hidden="hidden" value="${readBoard.boardWriter}"> ${readBoard.boardWriter}</td>
+		</tr>
+		<tr>
+			<td colspan="2">Content</td>
+		</tr>
+		<tr>
+			<td id="Board_Content" colspan="2">${readBoard.boardContent}</td>
+		</tr>
 	</table>
 	<button id="Update_Board_Button" type="submit">修正</button>
 </form>
@@ -53,13 +34,17 @@ readForm
 </div>
 </body>
 <script type="text/javascript">
+let boardWriter = document.getElementById('Board_Writer').value;
 loginUser = document.getElementById('Login_User').value;
-let boardWriter = document.getElementById('BOARD_WRITER').value;
+boardContent = document.getElementById('Board_Content');
 
 if(loginUser == '' 
 	|| !(loginUser.split(',')[1].split('=')[1] == boardWriter)){
 	document.getElementById('Update_Board_Button').style.display = 'none';
 	document.getElementById('Delete_Board_Button').style.display = 'none';
 }
+
+if(boardContent.textContent.length > 50)
+	boardContent.innerHTML = boardContent.textContent.substring(0, 50) + '<br>' + boardContent.textContent.substring(51, 100);
 </script>
 <jsp:include page="/WEB-INF/views/standard/footer.jsp"/>

@@ -18,7 +18,7 @@
 	</thead>
 	<tbody>
 		<c:forEach var="list" items="${boardList}">
-		<tr>
+		<tr id="Board_List">
 			<td>${list.boardNo}</td>
 			<td>
 				<form action="/board/readBoard" method="get">

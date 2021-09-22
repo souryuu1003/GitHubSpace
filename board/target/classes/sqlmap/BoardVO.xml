@@ -5,6 +5,7 @@
 
 	<select id="selectBoardList" resultType="BoardVO"> 
 		SELECT * FROM BOARD_INFO
+		ORDER BY BOARD_NO DESC
 	</select>
 	
 	<insert id="createBoard" parameterType="BoardVO">
