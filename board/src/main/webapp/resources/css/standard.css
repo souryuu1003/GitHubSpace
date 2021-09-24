@@ -139,15 +139,18 @@ body div {
 	padding-top: 6px;
 	padding-bottom: 6px;
 }
-#Board_List td:nth-child(1) {
+.boardList td:nth-child(1) {
 	width: 10%;
 	text-align: center;
 }
-#Board_List td:nth-child(2) {
+.boardList td:nth-child(2) {
 	width: 60%;
 }
-#Board_List td:nth-child(3) {
+.boardList td:nth-child(3) {
 	width: 30%;
+}
+#Board_Content{
+	height: 240px;
 }
 #Read_Button{
 	width: 100%;
@@ -160,6 +163,7 @@ body div {
 	margin: auto;
 	width: 80%;
 	border: 1px solid;
+	text-align: left;
 	font-size: 1.2em;
 }
 #Create_Read_Update_Form table tr {
@@ -229,6 +233,13 @@ body div {
 	color: aqua;
 	border: 1px solid aqua; 
 }
+.pagenate {
+	margin-top: 12px;
+    padding: 0px;
+    box-sizing: border-box;
+	height: 24px;
+    width: 100%;
+}
 
 /* footer */
 footer {
@@ -284,7 +295,7 @@ footer a {
 	#Frame_Set table tr td{
 	padding-top: 12px;
 	padding-bottom: 12px;
-}
+	}
 } 
 
 /* big screen desktop */

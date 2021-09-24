@@ -3,7 +3,9 @@
 
 <mapper namespace="com.devfox.board.service.dao.CommentDAO">
 
-	<select id="selectCommentList" resultType="CommentVO"> 
+	<select id="selectCommentList" parameterType="int" resultType="CommentVO"> 
 		SELECT * FROM COMMENT_INFO
+		WHERE BOARD_NO = #{boardNo}
+        ORDER BY COMMENT_NO DESC
 	</select>
 </mapper>

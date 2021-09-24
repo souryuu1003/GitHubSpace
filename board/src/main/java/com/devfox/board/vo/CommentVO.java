@@ -4,7 +4,7 @@ public class CommentVO {
 	private int commentNo;
 	private String commentContent;
 	private String commentWriter;
-	private int fkBoardNo;
+	private int boardNo;
 	public int getCommentNo() {
 		return commentNo;
 	}
@@ -23,15 +23,15 @@ public class CommentVO {
 	public void setCommentWriter(String commentWriter) {
 		this.commentWriter = commentWriter;
 	}
-	public int getFkBoardNo() {
-		return fkBoardNo;
+	public int getBoardNo() {
+		return boardNo;
 	}
-	public void setFkBoardNo(int fkBoardNo) {
-		this.fkBoardNo = fkBoardNo;
+	public void setBoardNo(int boardNo) {
+		this.boardNo = boardNo;
 	}
 	@Override
 	public String toString() {
 		return "CommentVO [commentNo=" + commentNo + ", commentContent=" + commentContent + ", commentWriter="
-				+ commentWriter + ", fkBoardNo=" + fkBoardNo + "]";
+				+ commentWriter + ", boardNo=" + boardNo + "]";
 	}
 }

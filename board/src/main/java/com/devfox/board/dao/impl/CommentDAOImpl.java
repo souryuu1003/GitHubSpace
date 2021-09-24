@@ -15,8 +15,8 @@ public class CommentDAOImpl implements CommentDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<CommentVO> selectCommentList() throws Exception {
-		return sqlSession.selectList("selectCommentList");
+	public List<CommentVO> selectCommentList(int boardNo) throws Exception {
+		return sqlSession.selectList("selectCommentList", boardNo);
 	}
 }
 

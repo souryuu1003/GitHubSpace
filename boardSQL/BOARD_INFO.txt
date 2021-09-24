@@ -1,0 +1,12 @@
+CREATE SEQUENCE BOARD_NO;
+
+CREATE TABLE BOARD_INFO
+("BOARD_NO" NUMBER(4) PRIMARY KEY
+,"BOARD_TITLE" VARCHAR2(120) NOT NULL
+,"BOARD_CONTENT" VARCHAR2(240) NOT NULL
+,"BOARD_WRITER" VARCHAR2(48) NOT NULL);
+
+INSERT INTO board_info(board_no, board_title, board_content, board_writer)
+VALUES (0, 'test title', 'test content','admin@gmail.com');
+
+commit;

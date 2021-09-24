@@ -16,7 +16,7 @@ public class CommentServiceImpl implements CommentService{
 	private CommentDAO commentMapper;
 	
 	@Override
-	public List<CommentVO> selectCommentList() throws Exception {
-		return commentMapper.selectCommentList();
+	public List<CommentVO> selectCommentList(int boardNo) throws Exception {
+		return commentMapper.selectCommentList(boardNo);
 	}
 }

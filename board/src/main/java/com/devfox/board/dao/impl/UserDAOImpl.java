@@ -20,7 +20,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public int selectUserNo(UserVO userVO) {
+	public int selectUserNo(UserVO userVO) throws Exception {
 		int selectUserNo = -1;
 		if(sqlSession.selectOne("checkUserNo", userVO) != null) {
 			selectUserNo = sqlSession.selectOne("checkUserNo", userVO);
@@ -29,12 +29,12 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public void joinUser(UserVO userVO) {
+	public void joinUser(UserVO userVO) throws Exception {
 		sqlSession.insert("joinUser", userVO);
 	}
 
 	@Override
-	public UserVO loginUser(UserVO userVO) {
+	public UserVO loginUser(UserVO userVO) throws Exception {
 		return sqlSession.selectOne("loginUser", userVO);
 	}
 }

@@ -21,12 +21,12 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public int selectUserNo(UserVO userVO) throws Exception{
+	public int selectUserNo(UserVO userVO) throws Exception {
 		return userMapper.selectUserNo(userVO);
 	}
 	
 	@Override
-	public void joinUser(UserVO userVO){
+	public void joinUser(UserVO userVO) throws Exception {
 		userMapper.joinUser(userVO);
 	}
 

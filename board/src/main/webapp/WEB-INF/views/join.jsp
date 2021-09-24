@@ -6,7 +6,6 @@
 <jsp:include page="/WEB-INF/views/standard/aside.jsp"/>
 <body>
 <div id="Frame_Set">
-join
 <form id="Login_Join_Form" action="#" method="post">
 	<table>
 		<tr>

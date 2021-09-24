@@ -5,6 +5,7 @@
 
 	<select id="selectUserList" resultType="UserVO"> 
 		SELECT * FROM USER_INFO
+		ORDER BY USER_NO ASC
 	</select>
 	
 	<select id="checkUserNo" parameterType="UserVO" resultType="int">

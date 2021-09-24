@@ -6,7 +6,6 @@
 <jsp:include page="/WEB-INF/views/standard/aside.jsp"/>
 <body>
 <div id="Frame_Set">
-readForm
 <form id="Create_Read_Update_Form" action="/board/updateBoard" method="get">
 	<table border="1">
 		<tr>
@@ -25,6 +24,7 @@ readForm
 			<td id="Board_Content" colspan="2">${readBoard.boardContent}</td>
 		</tr>
 	</table>
+	<jsp:include page="/WEB-INF/views/board/listComment.jsp"/>
 	<button id="Update_Board_Button" type="submit">修正</button>
 </form>
 <form id="Delete_Board_Form" action="deleteBoard" method="post">
@@ -34,6 +34,8 @@ readForm
 </div>
 </body>
 <script type="text/javascript">
+let viewPage = 'readBoard';
+let boardNo = document.getElementsByName('boardNo')[0].value;
 let boardWriter = document.getElementById('Board_Writer').value;
 loginUser = document.getElementById('Login_User').value;
 boardContent = document.getElementById('Board_Content');

@@ -4,7 +4,6 @@
 <jsp:include page="/WEB-INF/views/standard/header.jsp"/>
 <jsp:include page="/WEB-INF/views/standard/aside.jsp"/>
 <div id="Frame_Set">
-updateForm
 <form id="Create_Read_Update_Form" action="/board/updateBoard" method="post">
 <input name="boardNo" hidden="hidden" value="${updateBoard.boardNo}">
 	<table>

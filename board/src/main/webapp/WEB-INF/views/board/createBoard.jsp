@@ -5,7 +5,6 @@
 <jsp:include page="/WEB-INF/views/standard/aside.jsp"/>
 <body>
 <div id="Frame_Set">
-createForm
 <form id="Create_Read_Update_Form" action="/board/createBoard" method="post">
 	<table>
 		<tr>

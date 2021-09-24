@@ -20,17 +20,17 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void createBoard(BoardVO boardVO) {
+	public void createBoard(BoardVO boardVO) throws Exception {
 		sqlSession.insert("createBoard", boardVO);
 	}
 
 	@Override
-	public BoardVO readBoard(BoardVO boardVO) {
+	public BoardVO readBoard(BoardVO boardVO) throws Exception {
 		return sqlSession.selectOne("readBoard", boardVO);
 	}
 
 	@Override
-	public void updateBoard(BoardVO boardVO) {
+	public void updateBoard(BoardVO boardVO) throws Exception {
 		sqlSession.update("updateBoard", boardVO);
 	}
 

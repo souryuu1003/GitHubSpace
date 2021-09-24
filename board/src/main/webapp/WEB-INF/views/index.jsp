@@ -6,7 +6,6 @@
 <jsp:include page="/WEB-INF/views/standard/aside.jsp"/>
 <body>
 <div id="Frame_Set">
-	index
 <input id="Error_Message" value="${errorMessage}" hidden="hidden">
 	<table border="1">
 	<thead>

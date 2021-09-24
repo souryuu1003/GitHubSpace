@@ -5,6 +5,6 @@ import java.util.List;
 import com.devfox.board.vo.CommentVO;
 
 public interface CommentDAO {
-	List<CommentVO> selectCommentList() throws Exception;
+	List<CommentVO> selectCommentList(int boardNo) throws Exception;
 }
 

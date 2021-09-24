@@ -1,0 +1,12 @@
+CREATE SEQUENCE COMMENT_NO;
+
+CREATE TABLE COMMENT_INFO
+("COMMENT_NO" NUMBER(4) PRIMARY KEY
+,"COMMENT_CONTENT" VARCHAR2(48) NOT NULL
+,"COMMENT_WRITER" VARCHAR2(48) NOT NULL
+, "BOARD_NO" NUMBER(4) NOT NULL);
+
+INSERT INTO comment_info(comment_no, comment_content, comment_writer, board_no)
+VALUES (0, 'comment content', 'admin@gmail.com', 0);
+
+commit;
