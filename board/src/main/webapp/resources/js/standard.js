@@ -168,3 +168,10 @@ function limiteBoardContent(areaTag){
 		alert('内容は100字以内で書いてください。');
 	}
 }
+function limiteCommentContent(inputTag){
+	var commentContent = inputTag.value;       
+	if(commentContent.length > 15) {
+		inputTag.value = inputTag.value.substring(0, 15);
+		alert('コメントは15字以内で書いてください。');
+	}
+}

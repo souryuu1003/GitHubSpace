@@ -19,4 +19,15 @@ public class CommentServiceImpl implements CommentService{
 	public List<CommentVO> selectCommentList(int boardNo) throws Exception {
 		return commentMapper.selectCommentList(boardNo);
 	}
+
+	@Override
+	public void createComment(CommentVO commentVO) throws Exception {
+		commentMapper.createComment(commentVO);
+	}
+
+	@Override
+	public void deleteComment(CommentVO commentVO) throws Exception {
+		commentMapper.deleteComment(commentVO);
+		
+	}
 }

@@ -8,4 +8,19 @@
 		WHERE BOARD_NO = #{boardNo}
         ORDER BY COMMENT_NO DESC
 	</select>
+	
+	<insert id="createComment" parameterType="CommentVO">
+		INSERT INTO COMMENT_INFO
+		VALUES (
+			COMMENT_NO.NEXTVAL
+			, #{commentContent}
+			, #{commentWriter}
+			, #{boardNo})
+	</insert>
+	
+	<delete id="deleteComment" parameterType="CommentVO">
+		DELETE FROM COMMENT_INFO
+		WHERE COMMENT_NO = #{commentNo}
+		AND BOARD_NO = #{boardNo}
+	</delete>
 </mapper>

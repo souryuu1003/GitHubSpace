@@ -7,10 +7,8 @@
 <body>
 <div id="Frame_Set">
 <form id="Create_Read_Update_Form" action="/board/updateBoard" method="get">
+	<input name="boardNo" hidden="hidden" value="${readBoard.boardNo}">
 	<table border="1">
-		<tr>
-			<td>NO</td><td><input name="boardNo" hidden="hidden" value="${readBoard.boardNo}"> ${readBoard.boardNo}</td>
-		</tr>
 		<tr>
 			<td>Title</td><td>${readBoard.boardTitle}</td>
 		</tr>
@@ -21,7 +19,7 @@
 			<td colspan="2">Content</td>
 		</tr>
 		<tr>
-			<td id="Board_Content" colspan="2">${readBoard.boardContent}</td>
+			<td colspan="2" style="height: 180px;">${readBoard.boardContent}</td>
 		</tr>
 	</table>
 	<jsp:include page="/WEB-INF/views/board/listComment.jsp"/>

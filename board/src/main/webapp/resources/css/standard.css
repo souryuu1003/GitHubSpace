@@ -135,9 +135,8 @@ body div {
 	width: 100%;
 	text-align: left;
 }
-#Frame_Set table tr td{
-	padding-top: 6px;
-	padding-bottom: 6px;
+#Frame_Set table tr {
+	height: 36px;
 }
 .boardList td:nth-child(1) {
 	width: 10%;
@@ -148,9 +147,6 @@ body div {
 }
 .boardList td:nth-child(3) {
 	width: 30%;
-}
-#Board_Content{
-	height: 240px;
 }
 #Read_Button{
 	width: 100%;
@@ -170,6 +166,7 @@ body div {
 	height: 60px;
 }
 #Create_Read_Update_Form table tr td {
+	height: 60px;
 	text-align: center;
 }
 #Create_Read_Update_Form table tr td input {
@@ -185,8 +182,6 @@ body div {
 	font-size: 1.8em;
 }
 #Create_Board_Button, #Create_Read_Update_Form button {
-	margin-top: 30px;
-	margin-bottom: 30px;
 	padding: 6px;
 	font-size: 1.2em;
 	background-color: white;
@@ -289,12 +284,6 @@ footer a {
 		float: left;
 		font-size: 1.0em;
 		font-weight: normal;
-	}
-
-	/* board */	
-	#Frame_Set table tr td{
-	padding-top: 12px;
-	padding-bottom: 12px;
 	}
 } 
 
