@@ -15,31 +15,42 @@
 	</tr>
 	</thead>
 	<tbody>
-		<c:forEach var="list" items="${boardList}" varStatus="content">
-			<c:if test="${(paging.pageNo-1)*paging.pageSize <= content.index and content.index < paging.pageNo*paging.pageSize}">
-				<tr class="boardList">
-					<td>${list.boardNo}</td>
-					<td>
-						<form action="/board/readBoard" method="get">
-							<input name="boardNo" hidden="hidden" value="${list.boardNo}">
-							<button id="Read_Button" type="submit" onclick="rollCheck('${loginUser.userId})'">${list.boardTitle}</button>
-						</form>
-					</td>
-					<td>${list.boardWriter}</td>
+		<c:choose>
+			<c:when test="${not empty boardList}">
+				<c:forEach var="list" items="${boardList}" varStatus="content">
+					<c:if test="${(paging.pageNo-1)*paging.pageSize <= content.index and content.index < paging.pageNo*paging.pageSize}">
+						<tr class="boardList">
+							<td>${list.boardNo}</td>
+							<td>
+								<form action="/board/readBoard" method="get">
+									<input name="boardNo" hidden="hidden" value="${list.boardNo}">
+									<button id="Read_Button" type="submit" onclick="return rollCheck('${loginUser.userRl}')">${list.boardTitle}</button>
+								</form>
+							</td>
+							<td>${list.boardWriter}</td>
+						</tr>
+					</c:if>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<tr>
+					<td colspan="3" style="text-align: center;">まだ何も作成されてないです。</td>
 				</tr>
-			</c:if>
-		</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</tbody>
 	</table>
-	<jsp:include page="/WEB-INF/views/standard/paging.jsp" flush="true">
-	    <jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
-	    <jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
-	    <jsp:param name="startPageNo" value="${paging.startPageNo}" />
-	    <jsp:param name="pageNo" value="${paging.pageNo}" />
-	    <jsp:param name="endPageNo" value="${paging.endPageNo}" />
-	    <jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
-	    <jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
-	</jsp:include>
+	<c:if test="${not empty boardList}">
+		<jsp:include page="/WEB-INF/views/standard/paging.jsp" flush="true">
+		    <jsp:param name="firstPageNo" value="${paging.firstPageNo}" />
+		    <jsp:param name="prevPageNo" value="${paging.prevPageNo}" />
+		    <jsp:param name="startPageNo" value="${paging.startPageNo}" />
+		    <jsp:param name="pageNo" value="${paging.pageNo}" />
+		    <jsp:param name="endPageNo" value="${paging.endPageNo}" />
+		    <jsp:param name="nextPageNo" value="${paging.nextPageNo}" />
+		    <jsp:param name="finalPageNo" value="${paging.finalPageNo}" />
+		</jsp:include>
+	</c:if>
 	<button id="Create_Board_Button" onclick="location.href='/board/createBoard'">登録</button>
 </div>
 </body>

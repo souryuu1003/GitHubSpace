@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.devfox.board.service.BoardService;
 import com.devfox.board.service.CommentService;
@@ -19,7 +18,6 @@ import com.devfox.board.vo.BoardVO;
 import com.devfox.board.vo.CommentVO;
 
 @Controller
-@SessionAttributes("session")
 public class BoardController {
 	@Resource(name = "boardService")
 	private BoardService boardService;
@@ -135,6 +133,18 @@ public class BoardController {
 		}
 		return this.listBoard(model, request);
 	}
+	@RequestMapping(value = "/projects", method = RequestMethod.GET)
+	public String projects(Model model) throws Exception {
+		return "/board/projects";
+	}
+	@RequestMapping(value = "/history", method = RequestMethod.GET)
+	public String history(Model model) throws Exception {
+		return "/board/history";
+	}
+	@RequestMapping(value = "/etc", method = RequestMethod.GET)
+	public String etc(Model model) throws Exception {
+		return "/board/etc";
+	}
 	
 	/* comment */
 	@RequestMapping(value = "/createComment", method = RequestMethod.POST)
@@ -153,7 +163,7 @@ public class BoardController {
 	}
 	@RequestMapping(value = "/deleteComment", method = RequestMethod.GET)
 	public String deleteComment(Model model, HttpSession session, HttpServletRequest request, BoardVO boardVO, CommentVO commentVO) throws Exception {		
-		if(!commentVO.getCommentWriter().equals(null) && commentVO.getBoardNo() != 0) {
+		if(!commentVO.getCommentWriter().equals(null) && commentVO.getBoardNo() > -1) {
 			commentService.deleteComment(commentVO);
 		}
 		return this.readBoard(model, request, boardVO);

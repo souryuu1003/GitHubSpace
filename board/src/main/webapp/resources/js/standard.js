@@ -138,6 +138,13 @@ function joinCheck(){
 }
 
 /* board */
+function rollCheck(n){
+	if(n > 0)
+		return true;
+	else
+		alert('権限がありません。');
+		return false;
+}
 function createCheck(){
 	boardTitle = document.getElementsByName('boardTitle')[0];
 	boardContent = document.getElementsByName('boardContent')[0];

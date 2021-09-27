@@ -14,16 +14,16 @@
 		<a href="/board">Main</a>
 	</li>
 	<li>
-		<a href="/board/listBoard">Notice</a>
+		<a href="/board/listBoard">FreeBoard</a>
 	</li>
 	<li>
-		<a href="/board/listBoard">Free Board</a>
+		<a href="/board/projects">Projects</a>
 	</li>
 	<li>
-		<a href="/board/listBoard">Hobby Board</a>
+		<a href="/board/history">History</a>
 	</li>
 	<li>
-		<a href="#">etc.</a>
+		<a href="/board/etc">etc.</a>
 	</li>
 </ul>
 </aside>

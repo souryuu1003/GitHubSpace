@@ -152,6 +152,9 @@ body div {
 	width: 100%;
 	text-align: left;
 }
+#Read_Button:hover{
+	color: gray;
+}
 #Create_Read_Update_Form {
 	text-align: center;
 }
@@ -163,14 +166,14 @@ body div {
 	font-size: 1.2em;
 }
 #Create_Read_Update_Form table tr {
-	height: 60px;
+	height: 48px;
 }
 #Create_Read_Update_Form table tr td {
-	height: 60px;
+	height: 48px;
 	text-align: center;
 }
 #Create_Read_Update_Form table tr td input {
-	height: 60px;
+	height: 48px;
 	width: 100%;
 	margin-right: 30px;
 	font-size: 1.8em;
@@ -182,6 +185,7 @@ body div {
 	font-size: 1.8em;
 }
 #Create_Board_Button, #Create_Read_Update_Form button {
+	margin: 6px;
 	padding: 6px;
 	font-size: 1.2em;
 	background-color: white;

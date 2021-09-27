@@ -23,6 +23,12 @@
 		)
 	</insert>
 	
+	<update id="updateUser" parameterType="UserVO">
+		UPDATE USER_INFO
+		SET USER_RL = #{userRl}
+		WHERE USER_ID = #{userId}
+	</update>
+	
 	<select id="loginUser" parameterType="UserVO" resultType="UserVO">
 		SELECT USER_NO, USER_ID, USER_RL, USER_MC
 		FROM USER_INFO

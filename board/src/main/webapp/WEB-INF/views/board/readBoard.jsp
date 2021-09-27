@@ -19,7 +19,7 @@
 			<td colspan="2">Content</td>
 		</tr>
 		<tr>
-			<td colspan="2" style="height: 180px;">${readBoard.boardContent}</td>
+			<td id="Board_Content" colspan="2" style="height: 180px;">${readBoard.boardContent}</td>
 		</tr>
 	</table>
 	<jsp:include page="/WEB-INF/views/board/listComment.jsp"/>
