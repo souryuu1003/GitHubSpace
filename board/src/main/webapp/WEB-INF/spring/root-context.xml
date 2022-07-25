@@ -5,11 +5,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- db connector -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
-		<property name="username" value="souryuu"/>
-		<property name="password" value="2121"/>
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource>
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="p-1.ceja4cgenx5o.ap-northeast-1.rds.amazonaws.com:3306/board?useSSL=false&amp;allowPuplicKeyRetrieval=true"/>
+		<property name="username" value="asmdisk"/>
+		<property name="password" value="asmzk2020"/>
 	</bean>
 	
 	<!-- sql session -->
